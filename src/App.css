@@ -1,38 +1,227 @@
-.App {
+.app {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.app-header {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 1rem 2rem;
+  color: white;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.app-main {
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.search-bar {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.search-input {
+  flex: 1;
+  min-width: 300px;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.search-button, .clear-button {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.search-button {
+  background: #4CAF50;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.search-button:hover {
+  background: #45a049;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.clear-button {
+  background: #ff4757;
+  color: white;
+}
+
+.clear-button:hover {
+  background: #ff3742;
+}
+
+.transaction-table-container {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.transaction-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 800px;
+}
+
+.transaction-table th {
+  background: #f8f9fa;
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: #495057;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.transaction-table td {
+  padding: 1rem;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.transaction-row:hover {
+  background: #f8f9fa;
+}
+
+.transaction-row.incoming {
+  border-left: 4px solid #4CAF50;
+}
+
+.transaction-row.outgoing {
+  border-left: 4px solid #ff4757;
+}
+
+.transaction-row.top-up {
+  border-left: 4px solid #ffa502;
+}
+
+.transaction-type-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.transaction-row.incoming .transaction-type-badge {
+  background: #d4edda;
+  color: #155724;
+}
+
+.transaction-row.outgoing .transaction-type-badge {
+  background: #f8d7da;
+  color: #721c24;
+}
+
+.transaction-row.top-up .transaction-type-badge {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+  gap: 0.5rem;
+  background: #f8f9fa;
+  border-top: 1px solid #e9ecef;
+}
+
+.pagination-button {
+  padding: 0.5rem 1rem;
+  border: 1px solid #dee2e6;
+  background: white;
+  color: #495057;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.pagination-button:hover:not(:disabled) {
+  background: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+.pagination-button.active {
+  background: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+.pagination-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.loading, .error {
+  text-align: center;
+  padding: 2rem;
+  background: white;
+  border-radius: 12px;
+  margin: 1rem 0;
+}
+
+.loading {
+  color: #007bff;
+}
+
+.error {
+  color: #dc3545;
+  background: #f8d7da;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .app-main {
+    padding: 1rem;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .search-bar {
+    flex-direction: column;
+  }
+  
+  .search-input {
+    min-width: unset;
+  }
+  
+  .transaction-table {
+    font-size: 0.875rem;
+  }
+  
+  .transaction-table th,
+  .transaction-table td {
+    padding: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .app-header h1 {
+    font-size: 1.5rem;
+  }
+  
+  .transaction-table {
+    font-size: 0.75rem;
+  }
+  
+  .pagination {
+    flex-wrap: wrap;
+  }
+  
+  .pagination-button {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
   }
 }
